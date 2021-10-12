@@ -1,0 +1,15 @@
+.menu {
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  background-color: #fff;
+  width: 480px;
+  height: 320px;
+  border-radius: 8px;
+  padding: 16px;
+}
+
+input,
+button {
+  margin-bottom: 16px;
+}
