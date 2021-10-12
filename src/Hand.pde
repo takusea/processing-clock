@@ -4,7 +4,6 @@ class Hand {
   float _angle;
   
   Hand(float weight, float length, float angle) {
-    rectMode(CENTER);    //基準点を正方形の中心にする
     _weight = weight;
     _length = length;
     _angle = angle;
@@ -14,11 +13,12 @@ class Hand {
     _angle = angle;
   }
   
-  void display() {
+  void display(color _color) {
+    stroke(_color);
     pushMatrix();
     rotate(radians(_angle));
     strokeWeight(_weight);
-    line(0, 0, 0, -height / _length);
+    line(0, 0, 0, -_length);
     popMatrix();
   }
 }
