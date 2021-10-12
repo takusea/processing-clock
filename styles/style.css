@@ -7,6 +7,11 @@
   height: 320px;
   border-radius: 8px;
   padding: 16px;
+  display: none;
+}
+
+.menu--open {
+  display: block;
 }
 
 input,
