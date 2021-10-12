@@ -13,8 +13,8 @@ class Clock {
     _radius = radius;
   
     hourHand = new Hand(4, _radius / 2, (hour() / 12.0) * 360);
-    minuteHand = new Hand(4, _radius / 3, (minute() / 60.0) * 360);
-    secondHand = new Hand(2, _radius / 1.5, (second() / 60.0) * 360);
+    minuteHand = new Hand(4, _radius / 1.25, (minute() / 60.0) * 360);
+    secondHand = new Hand(2, _radius / 1.125, (second() / 60.0) * 360);
   }
   
   void update() {
