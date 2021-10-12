@@ -5,6 +5,7 @@
   <title>Processing.js Demo</title>
   <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
   <meta name="description" content="">
+  <link rel="stylesheet" href="styles/style.css">
   <script src="https://cdn.jsdelivr.net/npm/processing-js@1.6.6/processing.min.js"></script>
 </head>
 <body>
@@ -15,6 +16,22 @@
       src/main.pde
     ">
     </canvas>
+    <button id="button-addevent">イベントを追加</button>
+  </div>
+  <div class="menu">
+    <label for="name">なまえ</label>
+    <input type="text" id="name">
+    <div class="button-list">
+      <button>する</button>
+      <button>したい</button>
+      <button>した</button>
+    </div>
+    <label for="date">ひづけ</label>
+    <input type="date" id="date">
+    <label for="time">じかん</label>
+    <input type="time" id="time">
+    <input type="file" name="" accept="mp3" id="">
+    <input type="file" name="" accept="png" id="">
   </div>
 </body>
 </html>
