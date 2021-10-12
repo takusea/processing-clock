@@ -1,25 +1,18 @@
-import java.util.Calendar;//カレンダーをつくるため
-
 color backgroundColor;
 color foregroundColor;
 
 Clock clock;
-Button addEventButton;
 
 void setup() {
   size(640, 640);
   smooth();
   frameRate(30);
   
-  PFont font;
-  font = loadFont("../fonts/AppleSDGothicNeo-Bold-22.vlw");
-  textFont(font);
-
   clock = new Clock(width / 2, height / 2 - 32, 240);
-  addEventButton = new Button("イベントを追加", 0, 0, 320, 48);
 }
 
 void draw() {
+  /*
   Calendar cal = Calendar.getInstance();
   String week[] = {"日", "月", "火", "水", "木", "金", "土"};
   String nowWeek = week[cal.get(Calendar.DAY_OF_WEEK) -1];
@@ -41,17 +34,15 @@ void draw() {
       foregroundColor = #ffffff;
     }
   }
-
+  */
   background(backgroundColor);
   fill(foregroundColor);
 
   clock.update();
   
-  if(hour() > 6 && hour() < 18 || (nowWeek == "土" || nowWeek == "日")){ //複雑な時計
+  if(hour() > 6 && hour() < 18 /*|| (nowWeek == "土" || nowWeek == "日")*/){ //複雑な時計
     clock.display(backgroundColor, foregroundColor);
   } else {
     clock.display(backgroundColor, foregroundColor);
   }
-  
-  addEventButton.display();
 }
