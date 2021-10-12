@@ -38,7 +38,7 @@ class Clock {
     minuteHand.display(foregroundColor);
     secondHand.display(foregroundColor);
     
-    translate(0, 0);
+    translate(-_x, -_y);
   }
   
   void displayFrame(float radius, color backgroundColor, color foregroundColor) {
@@ -63,6 +63,8 @@ class Clock {
   }
   
   void displayNumber(float radius, color _color) {
+    textSize(48);
+    textAlign(CENTER, CENTER);  
     fill(_color);
     for(int i = 0; i < 12; i++) {
        float angle = radians((i - 2) * 360 / 12);

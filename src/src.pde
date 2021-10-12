@@ -4,6 +4,7 @@ color backgroundColor;
 color foregroundColor;
 
 Clock clock;
+Button addEventButton;
 
 void setup() {
   size(640, 640);
@@ -12,10 +13,10 @@ void setup() {
   
   PFont font;
   font = loadFont("../fonts/AppleSDGothicNeo-Bold-22.vlw");
-  textFont(font, 48);
-  textAlign(CENTER, CENTER);  
+  textFont(font);
 
-  clock = new Clock(width / 2, height / 2 - 200, 180);
+  clock = new Clock(width / 2, height / 2 - 32, 240);
+  addEventButton = new Button("イベントを追加", 0, 0, 320, 48);
 }
 
 void draw() {
@@ -51,4 +52,6 @@ void draw() {
   } else {
     clock.display(backgroundColor, foregroundColor);
   }
+  
+  addEventButton.display();
 }
