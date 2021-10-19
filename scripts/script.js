@@ -19,7 +19,16 @@ const openDialog = () => {
 }
 
 const submitMenu = () => {
-
+  const menuForm = document.getElementById('form')
+  const data = {
+    name: menuForm.name.value,
+    type: menuForm.type.value,
+    date: menuForm.date.value,
+    time: menuForm.time.value,
+    backgroundPath: menuForm.background.value,
+    songPath: menuForm.song.value
+  }
+  console.log(data)
 }
 
 const openDialogButton = document.getElementById('button-openmenu')
@@ -34,6 +43,6 @@ cancelButton.addEventListener('click', () => {
 
 const submitButton = document.getElementById('button-submit')
 submitButton.addEventListener('click', () => {
-  
+  submitMenu()
   closeDialog()
 })
