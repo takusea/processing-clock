@@ -41,6 +41,21 @@ class Clock {
     translate(-_x, -_y);
   }
   
+  void displaySimple(color backgroundColor, color foregroundColor) {
+    translate(_x, _y);
+
+    displayFrame(_radius, backgroundColor, foregroundColor);
+    
+    float numberRadius = _radius - 50;
+    displaySimpleNumber(numberRadius, foregroundColor);
+
+    hourHand.display(foregroundColor);
+    minuteHand.display(foregroundColor);
+    secondHand.display(foregroundColor);
+    
+    translate(-_x, -_y);
+  }
+  
   void displayFrame(float radius, color backgroundColor, color foregroundColor) {
     fill(backgroundColor);
     stroke(foregroundColor);
@@ -67,6 +82,20 @@ class Clock {
     textAlign(CENTER, CENTER);  
     fill(_color);
     for(int i = 0; i < 12; i++) {
+       float angle = radians((i - 2) * 360 / 12);
+       float horizontal = cos(angle);
+       float vertical = sin(angle);
+       
+       textSize(30);
+       text(i + 1, horizontal * radius, vertical * radius);
+    }
+  }
+  
+  void displaySimpleNumber(float radius, color _color) {
+    textSize(48);
+    textAlign(CENTER, CENTER);  
+    fill(_color);
+    for(int i = 0; i < 12; i += 3) {
        float angle = radians((i - 2) * 360 / 12);
        float horizontal = cos(angle);
        float vertical = sin(angle);
