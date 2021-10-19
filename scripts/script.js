@@ -38,18 +38,16 @@ const sortEventList = () => {
 const getEventInfo = () => {
   const nextEvent = eventList.find((event) => {
     const nowDate = new Date()
-    const tenMinutesBeforeDate = new Date(nowDate.getTime() - 10 * 60000)
-    const eventDate = new Date(` ${event.startdate} ${event.starttime}`)
-    return tenMinutesBeforeDate < eventDate
+    const eventFinishDate = new Date(` ${event.finishdate} ${event.finishtime}`)
+    return eventFinishDate > nowDate
   })
 
   if(nextEvent === undefined) return ('Event List is empty!')
 
   const nowDate = new Date()
-  const nextEventDate = new Date(` ${nextEvent.startdate} ${nextEvent.starttime}`)
-  const nextEventTenMinutesLaterDate = new Date(nextEventDate.getTime() + 10 * 60000)
-
-  if(nowDate >= nextEventDate && nowDate < nextEventTenMinutesLaterDate) {
+  const nextEventStartDate = new Date(` ${nextEvent.startdate} ${nextEvent.starttime}`)
+  const nextEventFinishDate = new Date(` ${nextEvent.finishdate} ${nextEvent.finishtime}`)
+  if(nowDate >= nextEventStartDate && nowDate < nextEventFinishDate) {
     return ('Now Event is: ' + nextEvent.name)
   }
 
