@@ -56,7 +56,7 @@ const getEventInfo = () => {
   return ('Next Event is: ' + nextEvent.name)
 }
 
-const changeEventInfoText = () => {
+const updateEventInfoText = () => {
   const eventInfoElement = document.getElementById('eventinfo')
   eventInfoElement.innerHTML = getEventInfo()
 }

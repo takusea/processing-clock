@@ -12,7 +12,7 @@ void setup() {
 }
 
 void draw() {
-  changeEventInfoText();
+  updateEventInfoText();
   changeColor(nowWeek(), hour());
   background(backgroundColor);
   fill(foregroundColor);
