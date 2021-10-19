@@ -2,7 +2,6 @@ color backgroundColor = #ffffff;
 color foregroundColor = #000000;
 
 Clock clock;
-String nowWeek = "土";
 
 void setup() {
   size(640, 640);
@@ -13,7 +12,7 @@ void setup() {
 }
 
 void draw() {
-  if(nowWeek == "土" || nowWeek == "日") {
+  if(nowWeek() == "土" || nowWeek() == "日") {
     if(hour() < 12) {
       backgroundColor = #c2ff85;
       foregroundColor = #333333;
@@ -35,7 +34,7 @@ void draw() {
 
   clock.update();
   
-  if(hour() > 6 && hour() < 18 || (nowWeek == "土" || nowWeek == "日")) {
+  if(hour() > 6 && hour() < 18 || (nowWeek() == "土" || nowWeek() == "日")) {
     clock.display(backgroundColor, foregroundColor);
   } else {
     clock.display(backgroundColor, foregroundColor);
