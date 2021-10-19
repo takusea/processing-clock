@@ -35,14 +35,26 @@ const sortEventList = () => {
   console.log(eventList)
 }
 
-const getEventInfo = () => {
-  const nextEvent = eventList.find((event) => {
+const getNowEvent = () => {
+  return eventList.find((event) => {
+    const nowDate = new Date()
+    const eventStartDate = new Date(` ${event.startdate} ${event.starttime}`)
+    const eventFinishDate = new Date(` ${event.finishdate} ${event.finishtime}`)
+    return eventStartDate <= nowDate && eventFinishDate > nowDate
+  })
+}
+
+const getNextEvent = () => {
+  return eventList.find((event) => {
     const nowDate = new Date()
     const eventFinishDate = new Date(` ${event.finishdate} ${event.finishtime}`)
     return eventFinishDate > nowDate
   })
+}
 
-  if(nextEvent === undefined) return ('Event List is empty!')
+const getEventInfo = () => {
+  const nextEvent = getNextEvent()
+  if(nextEvent === undefined) return 'Event List is empty!'
 
   const nowDate = new Date()
   const nextEventStartDate = new Date(` ${nextEvent.startdate} ${nextEvent.starttime}`)
@@ -52,6 +64,20 @@ const getEventInfo = () => {
   }
 
   return ('Next Event is: ' + nextEvent.name)
+}
+
+const getNowEventImagePath = () => {
+  const nowEvent = getNowEvent()
+  if(nowEvent === undefined) return ''
+  
+  return(nowEvent.backgroundPath)
+}
+
+const getNowEventSongPath = () => {
+  const nowEvent = getNowEvent()
+  if(nowEvent === undefined) return ''
+
+  return(nowEvent.songPath)
 }
 
 const updateEventInfoText = () => {
