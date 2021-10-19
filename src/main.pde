@@ -12,8 +12,26 @@ void setup() {
 }
 
 void draw() {
-  if(nowWeek() == "土" || nowWeek() == "日") {
-    if(hour() < 12) {
+  changeColor(nowWeek(), hour());
+  background(backgroundColor);
+  fill(foregroundColor);
+
+  clock.update();
+  
+  if(isOffDuty(nowWeek(), hour())) {
+    clock.display(backgroundColor, foregroundColor);
+  } else {
+    clock.display(backgroundColor, foregroundColor);
+  }
+}
+
+void isOffDuty(String week, int hour) {
+  return hour > 6 && hour < 18 || (week == "土" || week == "日")
+}
+
+void changeColor(String week, int hour) {
+  if(week == "土" || week == "日") {
+    if(hour < 12) {
       backgroundColor = #c2ff85;
       foregroundColor = #333333;
     } else {
@@ -21,22 +39,12 @@ void draw() {
       foregroundColor = #ffffff;
     }
   } else {
-    if(hour() < 12){
+    if(hour < 12){
       backgroundColor = #ffac54;
       foregroundColor = #333333;
     }else{
       backgroundColor = #425f85;
       foregroundColor = #ffffff;
     }
-  }
-  background(backgroundColor);
-  fill(foregroundColor);
-
-  clock.update();
-  
-  if(hour() > 6 && hour() < 18 || (nowWeek() == "土" || nowWeek() == "日")) {
-    clock.display(backgroundColor, foregroundColor);
-  } else {
-    clock.display(backgroundColor, foregroundColor);
   }
 }
