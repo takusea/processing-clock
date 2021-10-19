@@ -2,12 +2,12 @@
 <html lang="ja">
 <head>
   <meta charset="utf-8">
-  <title>Processing.js Demo</title>
+  <title>かぞくのとけい</title>
   <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
   <meta name="description" content="">
   <link rel="stylesheet" href="styles/style.css">
-  <script src="https://cdn.jsdelivr.net/npm/processing-js@1.6.6/processing.min.js"></script>
-  <script src="scripts/script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/processing-js@1.6.6/processing.min.js" defer></script>
+  <script src="scripts/script.js" defer></script>
 </head>
 <body>
   <div id="wrapper">
@@ -17,18 +17,21 @@
       src/main.pde
     ">
     </canvas>
-    <button id="button-addevent">イベントを追加</button>
+    <button id="button-openmenu">イベントを追加</button>
   </div>
-  <div class="menu">
+  <div id="menu" class="menu">
     <div class="menu__header">
       <p class="menu__title">予定を追加する</p>
     </div>
     <label for="name">なまえ</label>
     <input type="text" id="name">
     <div class="button-list">
-      <button>する</button>
-      <button>したい</button>
-      <button>した</button>
+      <input type="radio" name="" id="do" checked>
+      <label for="do">する</label>
+      <input type="radio" name="" id="want">
+      <label for="want">したい</label>
+      <input type="radio" name="" id="did">
+      <label for="did">した</label>
     </div>
     <label for="date">ひづけ</label>
     <input type="date" id="date">
@@ -37,7 +40,8 @@
     <input type="file" name="" accept="mp3" id="">
     <input type="file" name="" accept="png" id="">
     <div class="menu__footer">
-      <button>予定を追加</button>
+      <button id="">予定を追加</button>
+      <button>キャンセル</button>
     </div>
   </div>
 </body>
