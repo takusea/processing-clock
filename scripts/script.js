@@ -1,3 +1,5 @@
+const eventList = []
+
 const nowWeek = () => {
   const date = new Date()
   const nowWeekValue = date.getDay()
@@ -20,7 +22,7 @@ const openDialog = () => {
 
 const submitMenu = () => {
   const menuForm = document.getElementById('form')
-  const data = {
+  const event = {
     name: menuForm.name.value,
     type: menuForm.type.value,
     date: menuForm.date.value,
@@ -28,7 +30,7 @@ const submitMenu = () => {
     backgroundPath: menuForm.background.value,
     songPath: menuForm.song.value
   }
-  console.log(data)
+  console.log(event)
 }
 
 const openDialogButton = document.getElementById('button-openmenu')
