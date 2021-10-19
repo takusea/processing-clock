@@ -23,22 +23,24 @@
     <div class="menu__header">
       <p class="menu__title">予定を追加する</p>
     </div>
-    <label for="name">なまえ</label>
-    <input type="text" id="name">
-    <div class="button-list">
-      <input type="radio" name="" id="do" checked>
-      <label for="do">する</label>
-      <input type="radio" name="" id="want">
-      <label for="want">したい</label>
-      <input type="radio" name="" id="did">
-      <label for="did">した</label>
-    </div>
-    <label for="date">ひづけ</label>
-    <input type="date" id="date">
-    <label for="time">じかん</label>
-    <input type="time" id="time">
-    <input type="file" name="" accept="mp3" id="">
-    <input type="file" name="" accept="png" id="">
+    <form id="form" class="menu__form">
+      <label for="name">なまえ</label>
+      <input type="text" id="name">
+      <div class="button-list">
+        <input type="radio" name="" id="do" checked>
+        <label for="do">する</label>
+        <input type="radio" name="" id="want">
+        <label for="want">したい</label>
+        <input type="radio" name="" id="did">
+        <label for="did">した</label>
+      </div>
+      <label for="date">ひづけ</label>
+      <input type="date" id="date">
+      <label for="time">じかん</label>
+      <input type="time" id="time">
+      <input type="file" name="" accept="mp3" id="">
+      <input type="file" name="" accept="png" id="">
+    </form>
     <div class="menu__footer">
       <button id="button-submit">予定を追加</button>
       <button id="button-cancel">キャンセル</button>
