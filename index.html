@@ -10,15 +10,18 @@
   <script src="scripts/script.js" defer></script>
 </head>
 <body>
-  <div id="wrapper">
+  <main>
     <canvas id="app" data-processing-sources="
       src/Clock.pde
       src/Hand.pde
       src/main.pde
     ">
     </canvas>
-    <button id="button-openmenu">イベントを追加</button>
-  </div>
+    <button id="button-openmenu">予定を追加</button>
+    <div class="eventinfo">
+      <p id="eventinfo" class="eventinfo__text"></p>
+    </div>
+  </main>
   <div id="menu" class="menu">
     <div class="menu__header">
       <p class="menu__title">予定を追加する</p>
@@ -34,10 +37,16 @@
         <input type="radio" name="type" value="did" id="did">
         <label for="did">した</label>
       </div>
+      <p>はじまり</p>
       <label for="date">ひづけ</label>
-      <input type="date" name="date" required>
+      <input type="date" name="startdate" required>
       <label for="time">じかん</label>
-      <input type="time" name="time" required>
+      <input type="time" name="starttime" required>
+      <p>おわり</p>
+      <label for="date">ひづけ</label>
+      <input type="date" name="finishdate" required>
+      <label for="time">じかん</label>
+      <input type="time" name="finishtime" required>
       <input type="file" accept="mp3" name="song">
       <input type="file" accept="png" name="background">
     </form>
