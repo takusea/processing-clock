@@ -12,3 +12,14 @@ const openDialogButton = document.getElementById('button-openmenu')
 openDialogButton.addEventListener('click', () => {
   openDialog()
 })
+
+const cancelButton = document.getElementById('button-cancel')
+cancelButton.addEventListener('click', () => {
+  closeDialog()
+})
+
+const submitButton = document.getElementById('button-submit')
+submitButton.addEventListener('click', () => {
+  
+  closeDialog()
+})
