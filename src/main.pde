@@ -27,7 +27,7 @@ void draw() {
 }
 
 void isOffDuty(String week, int hour) {
-  return true ||hour < 6 && hour > 18 || (week == "土" || week == "日")
+  return (hour < 6 || hour > 18) || (week == "土" || week == "日")
 }
 
 void changeColor(String week, int hour) {
