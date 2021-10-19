@@ -95,7 +95,7 @@ class Clock {
     textSize(48);
     textAlign(CENTER, CENTER);  
     fill(_color);
-    for(int i = 0; i < 12; i += 3) {
+    for(int i = 2; i < 12; i += 3) {
        float angle = radians((i - 2) * 360 / 12);
        float horizontal = cos(angle);
        float vertical = sin(angle);
