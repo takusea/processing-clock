@@ -85,8 +85,30 @@ const updateEventInfoText = () => {
   eventInfoElement.innerHTML = getEventInfo()
 }
 
+const validateForm = (form) => {
+  const requiredInputList = form.querySelectorAll('[required]')
+  const InvalidInputList = [...requiredInputList].filter(element => {
+    return element.value === ''
+  })
+
+  requiredInputList.forEach(element => {
+    element.classList.remove('text-field--invalid')
+  })
+
+  if(InvalidInputList.length <= 0) {
+    return true
+  }
+  else {
+    InvalidInputList.forEach(element => {
+      element.classList.add('text-field--invalid')
+    })
+    return false
+  }
+}
+
 const submitMenu = () => {
   const menuForm = document.getElementById('form')
+  if(!validateForm(menuForm)) return false;
   const event = {
     name: menuForm.name.value,
     startdate: menuForm.startdate.value,
@@ -98,6 +120,7 @@ const submitMenu = () => {
   }
   eventList.push(event)
   sortEventList()
+  return true
 }
 
 const openDialogButton = document.getElementById('button-openmenu')
@@ -112,6 +135,7 @@ cancelButton.addEventListener('click', () => {
 
 const submitButton = document.getElementById('button-submit')
 submitButton.addEventListener('click', () => {
-  submitMenu()
-  closeDialog()
+  if(submitMenu()) {
+    closeDialog()
+  }
 })

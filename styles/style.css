@@ -28,6 +28,11 @@ canvas {
   border-radius: 4px;
 }
 
+.text-field--invalid {
+  border-color: #f64;
+  border-width: 2px;
+}
+
 .menu {
   position: fixed;
   inset: 0;
