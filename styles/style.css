@@ -2,6 +2,32 @@
   box-sizing: border-box;
 }
 
+canvas {
+  position: absolute;
+  z-index: -1;
+}
+
+.button {
+  appearance: none;
+  border: none;
+  height: 32px;
+  padding: 0 16px;
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 1px 2px #0004;
+}
+
+.button:active {
+  background-color: #f8f8f8;
+}
+
+.text-field {
+  height: 32px;
+  border: 1px solid #aaa;
+  padding: 0 8px;
+  border-radius: 4px;
+}
+
 .menu {
   position: fixed;
   inset: 0;
@@ -9,23 +35,41 @@
   background-color: #fff;
   width: 480px;
   height: fit-content;
-  border-radius: 8px;
-  padding: 16px;
+  border-radius: 16px;
   display: none;
+  box-shadow: 0 4px 8px #0004;
+  overflow: hidden;
+}
+
+.menu__footer {
+  padding: 16px;
+  background-color: #eee;
+}
+
+.menu__header {
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 16px;
+}
+
+.menu__title {
+  text-align: center;
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+.menu__form {
+  padding: 0 16px;
+  margin-bottom: 16px;
+}
+
+.menu__heading {
+  margin-top: 16px;
+  margin-bottom: 8px;
+  font-weight: 600;
 }
 
 .menu--open {
   display: block;
-}
-
-input,
-button {
-  margin-bottom: 16px;
-}
-
-canvas {
-  position: absolute;
-  z-index: -1;
 }
 
 .footer {
@@ -34,7 +78,8 @@ canvas {
   padding: 0 16px;
   height: 48px;
   border-radius: 24px;
-  background-color: #fffa;
+  background-color: #0008;
+  color: #fff;
   display: flex;
   gap: 16px;
   align-items: center;

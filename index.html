@@ -18,7 +18,7 @@
     ">
     </canvas>
     <footer class="footer">
-      <button id="button-openmenu">予定を追加</button>
+      <button id="button-openmenu" class="button">＋ 予定を追加</button>
       <div class="eventinfo">
         <p id="eventinfo" class="eventinfo__text"></p>
       </div>
@@ -30,33 +30,25 @@
     </div>
     <form id="form" class="menu__form">
       <label for="name">なまえ</label>
-      <input type="text" name="name" required>
-      <div class="button-list">
-        <input type="radio" name="type" value="do" id="do" checked>
-        <label for="do">する</label>
-        <input type="radio" name="type" value="want" id="want">
-        <label for="want">したい</label>
-        <input type="radio" name="type" value="did" id="did">
-        <label for="did">した</label>
-      </div>
-      <p>はじまり</p>
+      <input class="text-field" type="text" name="name" required>
+      <p class="menu__heading">はじまり</p>
       <label for="date">ひづけ</label>
-      <input type="date" name="startdate" required>
+      <input class="text-field" type="date" name="startdate" required>
       <label for="time">じかん</label>
-      <input type="time" name="starttime" required>
-      <p>おわり</p>
+      <input class="text-field" type="time" name="starttime" required>
+      <p class="menu__heading">おわり</p>
       <label for="date">ひづけ</label>
-      <input type="date" name="finishdate" required>
+      <input class="text-field" type="date" name="finishdate" required>
       <label for="time">じかん</label>
-      <input type="time" name="finishtime" required>
-      <p>うた</p>
+      <input class="text-field" type="time" name="finishtime" required>
+      <p class="menu__heading">うた</p>
       <input type="file" accept="audio/*" name="song">
-      <p>はいけい</p>
+      <p class="menu__heading">はいけい</p>
       <input type="file" accept="image/*" name="background">
     </form>
     <div class="menu__footer">
-      <button id="button-submit">予定を追加</button>
-      <button id="button-cancel">キャンセル</button>
+      <button id="button-submit" class="button">予定を追加</button>
+      <button id="button-cancel" class="button">キャンセル</button>
     </div>
   </div>
 </body>
