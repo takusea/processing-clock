@@ -47,13 +47,16 @@ canvas {
 }
 
 .menu__footer {
+  display: flex;
+  justify-content: right;
+  gap: 8px;
   padding: 16px;
   background-color: #eee;
 }
 
 .menu__header {
   border-bottom: 1px solid #ddd;
-  margin-bottom: 16px;
+  margin-bottom: 32px;
 }
 
 .menu__title {
@@ -64,7 +67,7 @@ canvas {
 
 .menu__form {
   padding: 0 16px;
-  margin-bottom: 16px;
+  margin-bottom: 32px;
 }
 
 .menu__heading {
@@ -80,9 +83,9 @@ canvas {
 .footer {
   position: absolute;
   bottom: 16px;
-  padding: 0 16px;
-  height: 48px;
-  border-radius: 24px;
+  padding: 0 24px;
+  height: 56px;
+  border-radius: 48px;
   background-color: #0008;
   color: #fff;
   display: flex;
