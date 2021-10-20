@@ -1,7 +1,7 @@
 class Hand {
-  float _weight;
-  float _length;
-  float _angle;
+  private final float _weight;
+  private final float _length;
+  private float _angle;
   
   Hand(float weight, float length, float angle) {
     _weight = weight;

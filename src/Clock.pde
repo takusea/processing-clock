@@ -1,11 +1,11 @@
 class Clock {
-  float _x;
-  float _y;
-  float _radius;
+  private float _x;
+  private float _y;
+  private float _radius;
   
-  Hand hourHand;
-  Hand minuteHand;
-  Hand secondHand;
+  private final Hand hourHand;
+  private final Hand minuteHand;
+  private final Hand secondHand;
 
   Clock(float x, float y, float radius) {
     _x = x;
@@ -16,13 +16,18 @@ class Clock {
     minuteHand = new Hand(4, _radius / 1.25, (minute() / 60.0) * 360);
     secondHand = new Hand(2, _radius / 1.125, (second() / 60.0) * 360);
   }
-  
+    
+  void move(float x, float y) {
+    _x = x;
+    _y = y;
+  }
+
   void update() {
     hourHand.update((hour() / 12.0) * 360);
     minuteHand.update((minute() / 60.0) * 360);
     secondHand.update((second() / 60.0) * 360);
   }
-  
+
   void display(color backgroundColor, color foregroundColor) {
     translate(_x, _y);
 
@@ -41,7 +46,7 @@ class Clock {
     translate(-_x, -_y);
   }
   
-  void displaySimple(color backgroundColor, color foregroundColor) {
+  private void displaySimple(color backgroundColor, color foregroundColor) {
     translate(_x, _y);
 
     displayFrame(_radius, backgroundColor, foregroundColor);
@@ -56,13 +61,13 @@ class Clock {
     translate(-_x, -_y);
   }
   
-  void displayFrame(float radius, color backgroundColor, color foregroundColor) {
+  private void displayFrame(float radius, color backgroundColor, color foregroundColor) {
     fill(backgroundColor);
     stroke(foregroundColor);
     ellipse(0, 0, radius * 2, radius * 2);
   }
   
-  void displayDial(float radius, color _color) {
+  private void displayDial(float radius, color _color) {
     stroke(_color);
     for(int i = 0; i < 60; i++) {
       float angle = radians(i * 360 / 60);
@@ -77,7 +82,7 @@ class Clock {
     }    
   }
   
-  void displayNumber(float radius, color _color) {
+  private void displayNumber(float radius, color _color) {
     textSize(48);
     textAlign(CENTER, CENTER);  
     fill(_color);
@@ -91,7 +96,7 @@ class Clock {
     }
   }
   
-  void displaySimpleNumber(float radius, color _color) {
+  private void displaySimpleNumber(float radius, color _color) {
     textSize(48);
     textAlign(CENTER, CENTER);  
     fill(_color);
