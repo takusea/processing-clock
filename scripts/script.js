@@ -89,7 +89,6 @@ const submitMenu = () => {
   const menuForm = document.getElementById('form')
   const event = {
     name: menuForm.name.value,
-    type: menuForm.type.value,
     startdate: menuForm.startdate.value,
     starttime: menuForm.starttime.value,
     finishdate: menuForm.finishdate.value,
