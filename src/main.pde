@@ -4,7 +4,7 @@ color foregroundColor = #000000;
 Clock clock;
 
 void setup() {
-  size(640, 640);
+  size(window.innerWidth, window.innerHeight);
   smooth();
   frameRate(30);
   
@@ -12,6 +12,9 @@ void setup() {
 }
 
 void draw() {
+  size(window.innerWidth, window.innerHeight);
+  clock.move(width / 2, height / 2 - 32)
+
   updateEventInfoText();
   changeColor(nowWeek(), hour());
   background(backgroundColor);
