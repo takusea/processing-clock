@@ -7,6 +7,17 @@ const nowWeek = () => {
   return nowWeek
 }
 
+const changeClockBackground = (sourceFile) => {
+  const imageElement = document.getElementById('clock-bg')
+  const fileUrl = URL.createObjectURL(sourceFile)
+  imageElement.src = fileUrl
+}
+
+const removeClockBackground = () => {
+  const imageElement = document.getElementById('clock-bg')
+  imageElement.src = ''
+}
+
 const playAudioFromFile = (sourceFile) => {
   const audioElement = document.getElementById('audio')
   const fileUrl = URL.createObjectURL(sourceFile)
@@ -15,7 +26,8 @@ const playAudioFromFile = (sourceFile) => {
 }
 
 const stopAudio = () => {
-  audioElement.stop()
+  const audioElement = document.getElementById('audio')
+  audioElement.pause()
 }
 
 const closeDialog = () => {
@@ -78,7 +90,12 @@ const updateEventInfo = () => {
 
   const nowEvent = getNowEvent()
   if(nowEvent) {
+    changeClockBackground(nowEvent.backgroundFile)
     playAudioFromFile(nowEvent.songFile)
+  }
+  else {
+    removeClockBackground()
+    stopAudio()
   }
 }
 
@@ -105,14 +122,16 @@ const validateForm = (form) => {
 
 const submitMenu = () => {
   const menuForm = document.getElementById('form')
-  if(!validateForm(menuForm)) return false;
+
+  if(!validateForm(menuForm)) return false
+
   const event = {
     name: menuForm.name.value,
     startdate: menuForm.startdate.value,
     starttime: menuForm.starttime.value,
     finishdate: menuForm.finishdate.value,
     finishtime: menuForm.finishtime.value,
-    backgroundPath: menuForm.background.value,
+    backgroundFile: menuForm.background.files[0],
     songFile: menuForm.song.files[0]
   }
   eventList.push(event)
