@@ -27,6 +27,10 @@ canvas {
   background-color: #f8f8f8;
 }
 
+.button--checked {
+  background-color: rgb(93, 177, 255);
+}
+
 .text-field {
   height: 32px;
   border: 1px solid #aaa;

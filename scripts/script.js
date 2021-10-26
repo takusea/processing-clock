@@ -1,4 +1,4 @@
-const eventList = []
+const eventList = localStorage.getItem('eventList') || []
 
 const nowWeek = () => {
   const date = new Date()
@@ -20,6 +20,7 @@ const removeClockBackground = () => {
 
 const playAudioFromFile = (sourceFile) => {
   const audioElement = document.getElementById('audio')
+  if(!audioElement.paused && !audioElement.ended) return
   const fileUrl = URL.createObjectURL(sourceFile)
   audioElement.src = fileUrl
   audioElement.play()
@@ -73,15 +74,15 @@ const getNextEvent = () => {
 const getEventInfo = () => {
   const nowEvent = getNowEvent()
   if(nowEvent) {
-    return ('Now Event is: ' + nowEvent.name)
+    return ('現在の予定: ' + nowEvent.name + ' 👍' + nowEvent.goodCount)
   }
 
   const nextEvent = getNextEvent()
   if(nextEvent) {
-    return ('Next Event is: ' + nextEvent.name)
+    return ('次回の予定: ' + nextEvent.name + ' 👍' + nextEvent.goodCount)
   }
 
-  return 'Event List is empty!'
+  return '予定はありません'
 }
 
 const updateEventInfo = () => {
@@ -90,8 +91,13 @@ const updateEventInfo = () => {
 
   const nowEvent = getNowEvent()
   if(nowEvent) {
-    changeClockBackground(nowEvent.backgroundFile)
-    playAudioFromFile(nowEvent.songFile)
+    if(nowEvent.backgroundFile) {
+      changeClockBackground(nowEvent.backgroundFile)
+    }
+
+    if(nowEvent.songFile) {
+      playAudioFromFile(nowEvent.songFile)
+    }
   }
   else {
     removeClockBackground()
@@ -132,7 +138,8 @@ const submitMenu = () => {
     finishdate: menuForm.finishdate.value,
     finishtime: menuForm.finishtime.value,
     backgroundFile: menuForm.background.files[0],
-    songFile: menuForm.song.files[0]
+    songFile: menuForm.song.files[0],
+    goodCount: 0
   }
   eventList.push(event)
   sortEventList()
@@ -154,4 +161,20 @@ submitButton.addEventListener('click', () => {
   if(submitMenu()) {
     closeDialog()
   }
+})
+
+const goodButton = document.getElementById('button-good')
+goodButton.addEventListener('click', (event) => {
+  const nowEvent = getNowEvent()
+  if(event.target.classList.contains('button--checked')) {
+    nowEvent.goodCount--
+    event.target.classList.remove('button--checked')
+    return
+  }
+  nowEvent.goodCount++
+  event.target.classList.add('button--checked')
+})
+
+window.addEventListener('beforeunload', () => {
+  localStorage.setItem(eventList)
 })
