@@ -31,7 +31,7 @@ class Clock {
   void display(color backgroundColor, color foregroundColor) {
     translate(_x, _y);
 
-    displayFrame(_radius, backgroundColor, foregroundColor);
+    displayFrame(_radius, "#fff", foregroundColor);
     
     float dialRadius = _radius - 10;
     displayDial(dialRadius, foregroundColor);
@@ -49,7 +49,7 @@ class Clock {
   private void displaySimple(color backgroundColor, color foregroundColor) {
     translate(_x, _y);
 
-    displayFrame(_radius, backgroundColor, foregroundColor);
+    displayFrame(_radius, "#fff", foregroundColor);
     
     float numberRadius = _radius - 50;
     displaySimpleNumber(numberRadius, foregroundColor);
@@ -64,7 +64,9 @@ class Clock {
   private void displayFrame(float radius, color backgroundColor, color foregroundColor) {
     fill(backgroundColor);
     stroke(foregroundColor);
+    strokeWeight(4);
     ellipse(0, 0, radius * 2, radius * 2);
+    strokeWeight(1);
   }
   
   private void displayDial(float radius, color _color) {
