@@ -1,4 +1,4 @@
-const eventList = localStorage.getItem('eventList') || []
+const eventList = JSON.parse(localStorage.getItem('eventList')) || []
 
 const nowWeek = () => {
   const date = new Date()
@@ -42,6 +42,23 @@ const closeDialog = () => {
 const openDialog = () => {
   const menuDialog = document.getElementById('menu')
   menuDialog.classList.add('menu--open')
+  initMenu()
+}
+
+const initMenu = () => {
+  const menuForm = document.getElementById('form')
+  menuForm.reset()
+  const date = new Date()
+  const year = date.getFullYear()
+  const month = String(date.getMonth() + 1).padStart(2, '0')
+  const day = String(date.getDate()).padStart(2, '0')
+  menuForm.startdate.value = `${year}-${month}-${day}`
+  menuForm.finishdate.value = `${year}-${month}-${day}`
+  
+  const hour = String(date.getHours()).padStart(2, '0')
+  const minute = String(date.getMinutes()).padStart(2, '0')
+  menuForm.starttime.value = `${hour}:${minute}`
+  menuForm.finishtime.value = `${hour}:${minute}`
 }
 
 const sortEventList = () => {
@@ -176,5 +193,5 @@ goodButton.addEventListener('click', (event) => {
 })
 
 window.addEventListener('beforeunload', () => {
-  localStorage.setItem(eventList)
+  localStorage.setItem('eventList', JSON.stringify(eventList))
 })
