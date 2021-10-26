@@ -36,7 +36,7 @@ void isOffDuty(String week, int hour) {
 void changeColor(String week, int hour) {
   if(isOffDuty(week, hour)) {
     backgroundColor = #694585;
-    foregroundColor = #ffffff;
+    foregroundColor = #333333;
   } else {
     backgroundColor = #c2ff85;
     foregroundColor = #333333;
