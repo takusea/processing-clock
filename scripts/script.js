@@ -7,6 +7,17 @@ const nowWeek = () => {
   return nowWeek
 }
 
+const playAudioFromFile = (sourceFile) => {
+  const audioElement = document.getElementById('audio')
+  const fileUrl = URL.createObjectURL(sourceFile)
+  audioElement.src = fileUrl
+  audioElement.play()
+}
+
+const stopAudio = () => {
+  audioElement.stop()
+}
+
 const closeDialog = () => {
   const menuDialog = document.getElementById('menu')
   menuDialog.classList.remove('menu--open')
@@ -61,23 +72,14 @@ const getEventInfo = () => {
   return 'Event List is empty!'
 }
 
-const getNowEventImagePath = () => {
-  const nowEvent = getNowEvent()
-  if(nowEvent === undefined) return ''
-  
-  return(nowEvent.backgroundPath)
-}
-
-const getNowEventSongPath = () => {
-  const nowEvent = getNowEvent()
-  if(nowEvent === undefined) return ''
-
-  return(nowEvent.songPath)
-}
-
-const updateEventInfoText = () => {
+const updateEventInfo = () => {
   const eventInfoElement = document.getElementById('eventinfo')
   eventInfoElement.innerHTML = getEventInfo()
+
+  const nowEvent = getNowEvent()
+  if(nowEvent) {
+    playAudioFromFile(nowEvent.songFile)
+  }
 }
 
 const validateForm = (form) => {
@@ -111,7 +113,7 @@ const submitMenu = () => {
     finishdate: menuForm.finishdate.value,
     finishtime: menuForm.finishtime.value,
     backgroundPath: menuForm.background.value,
-    songPath: menuForm.song.value
+    songFile: menuForm.song.files[0]
   }
   eventList.push(event)
   sortEventList()

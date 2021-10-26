@@ -15,7 +15,7 @@ void draw() {
   size(window.innerWidth, window.innerHeight);
   clock.move(width / 2, height / 2 - 32)
 
-  updateEventInfoText();
+  updateEventInfo();
   changeColor(nowWeek(), hour());
   background(backgroundColor);
   fill(foregroundColor);
