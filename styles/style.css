@@ -58,6 +58,15 @@ canvas {
   background-color: rgb(72, 156, 235);
 }
 
+.button--danger {
+  background-color: rgb(255, 105, 79);
+  color: #fff;
+}
+
+.button--danger:active {
+  background-color: rgb(233, 83, 56);
+}
+
 .reset-button {
   margin-right: auto;
 }
@@ -173,4 +182,9 @@ canvas {
 
 .event__detail {
   width: 100%;
+  display: none;
+}
+
+.event__detail--show {
+  display: block;
 }

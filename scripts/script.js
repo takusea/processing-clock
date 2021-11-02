@@ -85,16 +85,15 @@ const initEventListDialog = () => {
   const eventListDialog = new Dialog('dialog-eventlist')
 
   const openDialogButton = document.getElementById('button-open-eventlist')
-  openDialogButton.addEventListener('click', () => {
-    eventListDialog.open()
-  
+
+  const updateEventList = () => {
     const eventListElement = document.getElementById('eventlist')
-    const eventListHTML = eventList.map((event) => `
+    const eventListHTML = eventList.map((event, index) => `
       <li class="event">
         <h3 class="event__title">${event.name}</h3>
-        <button class="button event__button">削除</button>
-        <button class="button event__button">…</button>
-        <div class="event__detail event__detail--show">
+        <button class="button button--danger event__button event__button-delete" data-index="${index}">削除</button>
+        <button class="button event__button event__button-detail">…</button>
+        <div class="event__detail">
           <h4 class="event__heading">はじまり</h4>
           <p>${event.startdate} ${event.starttime}</p>
           <h4 class="event__heading">おわり</h4>
@@ -103,6 +102,28 @@ const initEventListDialog = () => {
       </li>
     `)
     eventListElement.innerHTML = eventListHTML.join('')
+  }
+
+  openDialogButton.addEventListener('click', () => {
+    eventListDialog.open()
+  
+    updateEventList()
+
+    const deleteEventButtonList = document.querySelectorAll('.event__button-delete')
+    deleteEventButtonList.forEach((element) => {
+      element.addEventListener('click', () => {
+        eventList.splice(element.dataset.index, 1)
+        updateEventList()
+      })
+    })
+
+    const detailEventButtonList = document.querySelectorAll('.event__button-detail')
+    detailEventButtonList.forEach((element) => {
+      element.addEventListener('click', () => {
+        const eventDetail = element.parentElement.querySelector('.event__detail')
+        eventDetail.classList.toggle('event__detail--show')
+      })
+    })
   })
 
   const cancelButton = document.getElementById('eld-close')
