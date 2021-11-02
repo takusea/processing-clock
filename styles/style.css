@@ -161,7 +161,7 @@ canvas {
 
 .event-list {
   padding: 0;
-  overflow: scroll;
+  overflow-y: scroll;
   height: 320px;
 }
 
