@@ -27,38 +27,63 @@
       <button id="button-good" class="button">👍</button>
     </footer>
   </main>
-  <div id="menu" class="menu">
+  <div id="menu-addevent" class="menu">
     <div class="menu__header">
-      <p class="menu__title">予定を追加する</p>
+      <h2 class="menu__title">予定を追加する</h2>
     </div>
-    <form id="form" class="menu__form">
-      <div class="flex-row">
-        <label for="name">なまえ</label>
-        <input class="text-field flex-row__grow" type="text" name="name" required>
-      </div>
-      <p class="menu__heading">はじまり</p>
-      <div class="flex-row">
-        <label for="date">ひづけ</label>
-        <input class="text-field flex-row__grow" type="date" name="startdate" required>
-        <label for="time">じかん</label>
-        <input class="text-field flex-row__grow" type="time" name="starttime" required>
-      </div>
-      <p class="menu__heading">おわり</p>
-      <div class="flex-row">
-        <label for="date">ひづけ</label>
-        <input class="text-field flex-row__grow" type="date" name="finishdate" required>
-        <label for="time">じかん</label>
-        <input class="text-field flex-row__grow" type="time" name="finishtime" required>
-      </div>
-      <p class="menu__heading">うた</p>
-      <input type="file" accept="audio/*" name="song">
-      <p class="menu__heading">はいけい</p>
-      <input type="file" accept="image/*" name="background">
-    </form>
+    <div class="menu__body">
+      <form id="form" class="form">
+        <div class="form-row">
+          <label for="name">なまえ</label>
+          <input class="text-field form-row__grow" type="text" name="name" required>
+        </div>
+        <h3 class="form__heading">はじまり</h3>
+        <div class="form-row">
+          <label for="date">ひづけ</label>
+          <input class="text-field form-row__grow" type="date" name="startdate" required>
+          <label for="time">じかん</label>
+          <input class="text-field form-row__grow" type="time" name="starttime" required>
+        </div>
+        <h3 class="form__heading">おわり</h3>
+        <div class="form-row">
+          <label for="date">ひづけ</label>
+          <input class="text-field form-row__grow" type="date" name="finishdate" required>
+          <label for="time">じかん</label>
+          <input class="text-field form-row__grow" type="time" name="finishtime" required>
+        </div>
+        <h3 class="form__heading">うた</h3>
+        <input type="file" accept="audio/*" name="song">
+        <h3 class="form__heading">はいけい</h3>
+        <input type="file" accept="image/*" name="background">
+      </form>
+    </div>
     <div class="menu__footer">
       <button id="button-reset" type="reset" class="button reset-button">リセット</button>
       <button id="button-cancel" type="button" class="button">キャンセル</button>
       <button id="button-submit" type="submit" class="button button--primary">予定を追加</button>
+    </div>
+  </div>
+  <div id="menu-eventlist" class="menu menu--open">
+    <div class="menu__header">
+      <h2 class="menu__title">予定一覧</h2>
+    </div>
+    <div class="menu__body">
+      <ul class="event-list">
+        <li class="event">
+          <h3 class="event__title">あああ</h3>
+          <button class="button event__button">削除</button>
+          <button class="button event__button">…</button>
+          <div class="event__detail event__detail--show">
+            <h4 class="event__heading">はじまり</h4>
+            <p>2021/11/11 22:22:22</p>
+            <h4 class="event__heading">おわり</h4>
+            <p>2021/11/11 22:22:22</p>
+          </div>
+          </li>
+      </ul>
+    </div>
+    <div class="menu__footer">
+      <button id="button-submit" type="submit" class="button button--primary">閉じる</button>
     </div>
   </div>
 </body>

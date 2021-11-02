@@ -32,7 +32,7 @@ const stopAudio = () => {
 }
 
 const closeDialog = () => {
-  const menuDialog = document.getElementById('menu')
+  const menuDialog = document.getElementById('menu-addevent')
   menuDialog.classList.remove('menu--open')
 
   const menuForm = document.getElementById('form')
@@ -40,7 +40,7 @@ const closeDialog = () => {
 }
 
 const openDialog = () => {
-  const menuDialog = document.getElementById('menu')
+  const menuDialog = document.getElementById('menu-addevent')
   menuDialog.classList.add('menu--open')
   initMenu()
 }

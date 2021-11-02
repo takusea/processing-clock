@@ -1,5 +1,6 @@
 * {
   box-sizing: border-box;
+  margin: 0;
 }
 
 body {
@@ -13,13 +14,19 @@ canvas {
   mix-blend-mode: darken;
 }
 
-.flex-row {
+.form__heading {
+  margin-top: 16px;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.form-row {
   display: flex;
   gap: 8px;
   align-items: center;
 }
 
-.flex-row__grow {
+.form-row__grow {
   flex-grow: 1;
 }
 
@@ -45,6 +52,10 @@ canvas {
 .button--primary {
   background-color: rgb(93, 177, 255);
   color: #fff;
+}
+
+.button--primary:active {
+  background-color: rgb(72, 156, 235);
 }
 
 .reset-button {
@@ -103,6 +114,7 @@ canvas {
 .menu__header {
   border-bottom: 1px solid #ddd;
   margin-bottom: 32px;
+  padding: 16px 8px;
 }
 
 .menu__title {
@@ -111,15 +123,9 @@ canvas {
   line-height: 1;
 }
 
-.menu__form {
+.menu__body {
   padding: 0 16px;
   margin-bottom: 32px;
-}
-
-.menu__heading {
-  margin-top: 16px;
-  margin-bottom: 8px;
-  font-weight: 600;
 }
 
 .menu--open {
@@ -142,4 +148,29 @@ canvas {
   gap: 16px;
   align-items: center;
   justify-content: center;
+}
+
+.event-list {
+  padding: 0;
+  overflow: scroll;
+  height: 320px;
+}
+
+.event {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  border-bottom: 1px solid #0002;
+  padding: 16px 0;
+}
+
+.event__title {
+  flex-grow: 1;
+  margin: 0;
+  font-weight: 400;
+}
+
+.event__detail {
+  width: 100%;
 }
