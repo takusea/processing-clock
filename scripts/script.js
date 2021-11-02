@@ -180,6 +180,11 @@ submitButton.addEventListener('click', () => {
   }
 })
 
+const resetButton = document.getElementById('button-reset')
+resetButton.addEventListener('click', () => {
+  initMenu()
+})
+
 const goodButton = document.getElementById('button-good')
 goodButton.addEventListener('click', (event) => {
   const nowEvent = getNowEvent()
