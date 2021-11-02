@@ -13,6 +13,16 @@ canvas {
   mix-blend-mode: darken;
 }
 
+.flex-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.flex-row__grow {
+  flex-grow: 1;
+}
+
 .button {
   appearance: none;
   border: none;
@@ -29,6 +39,16 @@ canvas {
 
 .button--checked {
   background-color: rgb(93, 177, 255);
+  color: #fff;
+}
+
+.button--primary {
+  background-color: rgb(93, 177, 255);
+  color: #fff;
+}
+
+.reset-button {
+  margin-right: auto;
 }
 
 .text-field {
