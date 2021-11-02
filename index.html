@@ -7,6 +7,10 @@
   <meta name="description" content="">
   <link rel="stylesheet" href="styles/style.css">
   <script src="https://cdn.jsdelivr.net/npm/processing-js@1.6.6/processing.min.js" defer></script>
+  <script src="scripts/form.js" defer></script>
+  <script src="scripts/dialog.js" defer></script>
+  <script src="scripts/event-list.js" defer></script>
+  <script src="scripts/audio.js" defer></script>
   <script src="scripts/script.js" defer></script>
 </head>
 <body>
@@ -20,18 +24,19 @@
     ">
     </canvas>
     <footer class="footer">
-      <button id="button-openmenu" class="button button--primary">＋ 予定を追加</button>
+      <button id="button-open-addevent" class="button button--primary">＋ 予定を追加</button>
+      <button id="button-open-eventlist" class="button">予定一覧</button>
       <div class="eventinfo">
         <p id="eventinfo" class="eventinfo__text"></p>
       </div>
       <button id="button-good" class="button">👍</button>
     </footer>
   </main>
-  <div id="menu-addevent" class="menu">
-    <div class="menu__header">
-      <h2 class="menu__title">予定を追加する</h2>
+  <div id="dialog-addevent" class="dialog">
+    <div class="dialog__header">
+      <h2 class="dialog__title">予定を追加する</h2>
     </div>
-    <div class="menu__body">
+    <div class="dialog__body">
       <form id="form" class="form">
         <div class="form-row">
           <label for="name">なまえ</label>
@@ -57,33 +62,21 @@
         <input type="file" accept="image/*" name="background">
       </form>
     </div>
-    <div class="menu__footer">
+    <div class="dialog__footer">
       <button id="button-reset" type="reset" class="button reset-button">リセット</button>
       <button id="button-cancel" type="button" class="button">キャンセル</button>
       <button id="button-submit" type="submit" class="button button--primary">予定を追加</button>
     </div>
   </div>
-  <div id="menu-eventlist" class="menu menu--open">
-    <div class="menu__header">
-      <h2 class="menu__title">予定一覧</h2>
+  <div id="dialog-eventlist" class="dialog">
+    <div class="dialog__header">
+      <h2 class="dialog__title">予定一覧</h2>
     </div>
-    <div class="menu__body">
-      <ul class="event-list">
-        <li class="event">
-          <h3 class="event__title">あああ</h3>
-          <button class="button event__button">削除</button>
-          <button class="button event__button">…</button>
-          <div class="event__detail event__detail--show">
-            <h4 class="event__heading">はじまり</h4>
-            <p>2021/11/11 22:22:22</p>
-            <h4 class="event__heading">おわり</h4>
-            <p>2021/11/11 22:22:22</p>
-          </div>
-          </li>
-      </ul>
+    <div class="dialog__body">
+      <ul id="eventlist" class="event-list"></ul>
     </div>
-    <div class="menu__footer">
-      <button id="button-submit" type="submit" class="button button--primary">閉じる</button>
+    <div class="dialog__footer">
+      <button id="eld-close" type="button" class="button button--primary dialog-button__close">閉じる</button>
     </div>
   </div>
 </body>
