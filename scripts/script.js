@@ -48,6 +48,12 @@ const openDialog = () => {
 const initMenu = () => {
   const menuForm = document.getElementById('form')
   menuForm.reset()
+
+  const requiredInputList = form.querySelectorAll('[required]')
+  requiredInputList.forEach(element => {
+    element.classList.remove('text-field--invalid')
+  })
+
   const date = new Date()
   const year = date.getFullYear()
   const month = String(date.getMonth() + 1).padStart(2, '0')
