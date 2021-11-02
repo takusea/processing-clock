@@ -90,7 +90,7 @@ canvas {
   display: none;
 }
 
-.menu {
+.dialog {
   position: fixed;
   inset: 0;
   margin: auto;
@@ -103,7 +103,7 @@ canvas {
   overflow: hidden;
 }
 
-.menu__footer {
+.dialog__footer {
   display: flex;
   justify-content: right;
   gap: 8px;
@@ -111,24 +111,24 @@ canvas {
   background-color: #eee;
 }
 
-.menu__header {
+.dialog__header {
   border-bottom: 1px solid #ddd;
   margin-bottom: 32px;
   padding: 16px 8px;
 }
 
-.menu__title {
+.dialog__title {
   text-align: center;
   font-size: 1.25rem;
   line-height: 1;
 }
 
-.menu__body {
+.dialog__body {
   padding: 0 16px;
   margin-bottom: 32px;
 }
 
-.menu--open {
+.dialog--open {
   display: block;
 }
 
