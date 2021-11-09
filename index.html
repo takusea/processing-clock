@@ -14,7 +14,7 @@
   <script src="scripts/script.js" defer></script>
 </head>
 <body>
-  <audio id="audio" src=""></audio>
+  <audio id="audio"></audio>
   <main>
     <img src="" id="clock-bg" class="background" alt="">
     <canvas id="app" data-processing-sources="
@@ -63,9 +63,9 @@
       </form>
     </div>
     <div class="dialog__footer">
-      <button id="button-reset" type="reset" class="button reset-button">リセット</button>
-      <button id="button-cancel" type="button" class="button">キャンセル</button>
-      <button id="button-submit" type="submit" class="button button--primary">予定を追加</button>
+      <button type="reset" class="button dialog__reset">リセット</button>
+      <button type="button" class="button dialog__close">キャンセル</button>
+      <button type="submit" class="button button--primary dialog__submit">予定を追加</button>
     </div>
   </div>
   <div id="dialog-eventlist" class="dialog">
@@ -76,7 +76,7 @@
       <ul id="eventlist" class="event-list"></ul>
     </div>
     <div class="dialog__footer">
-      <button id="eld-close" type="button" class="button dialog-button__close">閉じる</button>
+      <button type="button" class="button dialog__close">閉じる</button>
     </div>
   </div>
 </body>
