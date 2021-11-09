@@ -16,133 +16,110 @@ const removeClockBackground = () => {
   imageElement.src = ''
 }
 
-const getEventInfo = () => {
-  const nowEvent = getNowEvent()
-  if(nowEvent) {
-    return ('現在の予定: ' + nowEvent.name + ' 👍' + nowEvent.goodCount)
-  }
+const eventList = new EventList()
 
-  const nextEvent = getNextEvent()
-  if(nextEvent) {
-    return ('次回の予定: ' + nextEvent.name + ' 👍' + nextEvent.goodCount)
-  }
-
-  return '予定はありません'
-}
+const audioElement = document.getElementById('audio')
+const audioPlayer = new AudioPlayer(audioElement)
 
 const updateEventInfo = () => {
   const eventInfoElement = document.getElementById('eventinfo')
-  eventInfoElement.innerHTML = getEventInfo()
+  eventInfoElement.innerHTML = eventList.toDisplayText()
 
-  const nowEvent = getNowEvent()
+  const nowEvent = eventList.nowEvent()
   if(nowEvent) {
     if(nowEvent.backgroundFile) {
       changeClockBackground(nowEvent.backgroundFile)
     }
 
     if(nowEvent.songFile) {
-      playAudioFromFile(nowEvent.songFile)
+      audioPlayer.setFile(nowEvent.songFile)
+      audioPlayer.play()
     }
-  }
-  else {
+  } else {
     removeClockBackground()
-    stopAudio()
+    audioPlayer.stop()
   }
 }
 
 const initAddEventDialog = () => {
-  const addEventDialog = new Dialog('dialog-addevent')
+  const dialogElement = document.getElementById('dialog-addevent')
+  const addEventDialog = new Dialog(dialogElement)
 
   const openDialogButton = document.getElementById('button-open-addevent')
   openDialogButton.addEventListener('click', () => {
+    addEventDialog.reset()
     addEventDialog.open()
-    initForm()
   })
 
-  const cancelButton = document.getElementById('button-cancel')
-  cancelButton.addEventListener('click', () => {
-    addEventDialog.close()
-  
-    const menuForm = document.getElementById('form')
-    menuForm.reset()
-  })
-
-  const submitButton = document.getElementById('button-submit')
-  submitButton.addEventListener('click', () => {
+  addEventDialog.addEventListener('submit', () => {
     if(submitForm()) {
       addEventDialog.close()
     }
   })
 
-  const resetButton = document.getElementById('button-reset')
-  resetButton.addEventListener('click', () => {
-    initForm()
-  })  
+  addEventDialog.addEventListener('reset', () => { initForm() })
 }
 initAddEventDialog()
 
-const initEventListDialog = () => {
-  const eventListDialog = new Dialog('dialog-eventlist')
+const updateEventList = () => {
+  const eventListElement = document.getElementById('eventlist')
+  const eventListHTML = eventList.map((event, index) => `
+    <li class="event">
+      <h3 class="event__title">${event.name}</h3>
+      <button class="button button--danger event__button event__button-delete" data-index="${index}">削除</button>
+      <button class="button event__button event__button-detail">…</button>
+      <div class="event__detail">
+        <h4 class="event__heading">はじまり</h4>
+        <p>${event.startdate} ${event.starttime}</p>
+        <h4 class="event__heading">おわり</h4>
+        <p>${event.finishdate} ${event.finishtime}</p>
+      </div>
+    </li>
+  `)
+  eventListElement.innerHTML = eventListHTML.join('')
 
-  const openDialogButton = document.getElementById('button-open-eventlist')
-
-  const updateEventList = () => {
-    const eventListElement = document.getElementById('eventlist')
-    const eventListHTML = eventList.map((event, index) => `
-      <li class="event">
-        <h3 class="event__title">${event.name}</h3>
-        <button class="button button--danger event__button event__button-delete" data-index="${index}">削除</button>
-        <button class="button event__button event__button-detail">…</button>
-        <div class="event__detail">
-          <h4 class="event__heading">はじまり</h4>
-          <p>${event.startdate} ${event.starttime}</p>
-          <h4 class="event__heading">おわり</h4>
-          <p>${event.finishdate} ${event.finishtime}</p>
-        </div>
-      </li>
-    `)
-    eventListElement.innerHTML = eventListHTML.join('')
-  }
-
-  openDialogButton.addEventListener('click', () => {
-    eventListDialog.open()
-  
-    updateEventList()
-
-    const deleteEventButtonList = document.querySelectorAll('.event__button-delete')
-    deleteEventButtonList.forEach((element) => {
-      element.addEventListener('click', () => {
-        eventList.splice(element.dataset.index, 1)
-        updateEventList()
-      })
-    })
-
-    const detailEventButtonList = document.querySelectorAll('.event__button-detail')
-    detailEventButtonList.forEach((element) => {
-      element.addEventListener('click', () => {
-        const eventDetail = element.parentElement.querySelector('.event__detail')
-        eventDetail.classList.toggle('event__detail--show')
-      })
+  const deleteEventButtonList = document.querySelectorAll('.event__button-delete')
+  deleteEventButtonList.forEach((element) => {
+    element.addEventListener('click', () => {
+      eventList.remove(element.dataset.index)
+      updateEventList()
     })
   })
 
-  const cancelButton = document.getElementById('eld-close')
-  cancelButton.addEventListener('click', () => { eventListDialog.close() })
+  const detailEventButtonList = document.querySelectorAll('.event__button-detail')
+  detailEventButtonList.forEach((element) => {
+    element.addEventListener('click', () => {
+      const eventDetail = element.parentElement.querySelector('.event__detail')
+      eventDetail.classList.toggle('event__detail--show')
+    })
+  })
+}
+
+const initEventListDialog = () => {
+  const dialogElement = document.getElementById('dialog-eventlist')
+  const eventListDialog = new Dialog(dialogElement)
+
+  const openDialogButton = document.getElementById('button-open-eventlist')
+  openDialogButton.addEventListener('click', () => {
+    updateEventList()
+    eventListDialog.open()
+  })
 }
 initEventListDialog()
 
 const goodButton = document.getElementById('button-good')
 goodButton.addEventListener('click', (event) => {
-  const nowEvent = getNowEvent()
+  const nowEvent = eventList.nowEvent()
   if(event.target.classList.contains('button--checked')) {
     nowEvent.goodCount--
     event.target.classList.remove('button--checked')
     return
+  } else {
+    nowEvent.goodCount++
+    event.target.classList.add('button--checked')
   }
-  nowEvent.goodCount++
-  event.target.classList.add('button--checked')
 })
 
 window.addEventListener('beforeunload', () => {
-  localStorage.setItem('eventList', JSON.stringify(eventList))
+  eventList.save()
 })
