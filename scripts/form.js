@@ -13,7 +13,7 @@ const initForm = () => {
   const day = String(date.getDate()).padStart(2, '0')
   menuForm.startdate.value = `${year}-${month}-${day}`
   menuForm.finishdate.value = `${year}-${month}-${day}`
-  
+
   const hour = String(date.getHours()).padStart(2, '0')
   const minute = String(date.getMinutes()).padStart(2, '0')
   menuForm.starttime.value = `${hour}:${minute}`
@@ -57,6 +57,5 @@ const submitForm = () => {
     goodCount: 0
   }
   eventList.push(event)
-  sortEventList()
   return true
 }
