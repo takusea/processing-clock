@@ -41,30 +41,34 @@ canvas {
 }
 
 .button:active {
-  background-color: #f8f8f8;
+  background-color: #f1f1f1;
 }
 
 .button--checked {
-  background-color: rgb(93, 177, 255);
+  background-color: rgb(35, 149, 255);
   color: #fff;
 }
 
+.button--checked:active {
+  background-color: rgb(15, 130, 238);
+}
+
 .button--primary {
-  background-color: rgb(93, 177, 255);
+  background-color: rgb(35, 149, 255);
   color: #fff;
 }
 
 .button--primary:active {
-  background-color: rgb(72, 156, 235);
+  background-color: rgb(15, 130, 238);
 }
 
 .button--danger {
-  background-color: rgb(255, 105, 79);
+  background-color: rgb(255, 92, 64);
   color: #fff;
 }
 
 .button--danger:active {
-  background-color: rgb(233, 83, 56);
+  background-color: rgb(228, 68, 39);
 }
 
 .reset-button {
