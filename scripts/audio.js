@@ -1,13 +1,25 @@
-const playAudioFromFile = (sourceFile) => {
-    const audioElement = document.getElementById('audio')
-    if(!audioElement.paused && !audioElement.ended) return
-    const fileUrl = URL.createObjectURL(sourceFile)
-    audioElement.src = fileUrl
-    audioElement.play()
+class AudioPlayer {
+  constructor(element) {
+    this.element = element
   }
-  
-  const stopAudio = () => {
-    const audioElement = document.getElementById('audio')
-    audioElement.pause()
+
+  isPlaying() {
+    return (!this.element.paused && !this.element.ended)
   }
-  
+
+  setFile(file) {
+    if (this.isPlaying()) return
+
+    const fileUrl = URL.createObjectURL(file)
+    this.element.src = fileUrl
+  }
+
+  play() {
+    if (this.isPlaying()) return
+    this.element.play()
+  }
+
+  stop() {
+    this.element.pause()
+  }
+}
